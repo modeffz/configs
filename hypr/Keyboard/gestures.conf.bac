@@ -1,0 +1,22 @@
+gestures {
+    #sensitivity = 0.55
+    #min_distance = 20
+    #duration = 180
+    workspace_swipe = true
+}
+
+# --- свайпы четырьмя пальцами ---
+#bindgesture = swipe:4:l, workspace, -1
+#bindgesture = swipe:4:r, workspace, +1
+#bindgesture = swipe:4:u, exec, hyprctl dispatch overview:toggle
+#bindgesture = swipe:4:d, killactive
+
+# --- пинч ---
+#bindgesture = pinch:4:in, workspace, previous
+#bindgesture = pinch:4:out, workspace, next
+
+# --- три пальца ---
+#bindgesture = swipe:3:u, fullscreen
+#bindgesture = swipe:3:d, minimize
+#bindgesture = swipe:3:l, togglefloating
+#bindgesture = swipe:3:r, cyclenext

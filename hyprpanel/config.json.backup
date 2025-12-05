@@ -162,5 +162,6 @@
   "notifications.position": "top right",
   "theme.bar.menus.menu.notifications.height": "58em",
   "bar.customModules.kbLayout.icon": "󰌌",
-  "bar.customModules.kbLayout.labelType": "layout"
+  "bar.customModules.kbLayout.labelType": "layout",
+  "menus.dashboard.shortcuts.left.shortcut1.icon": ""
 }

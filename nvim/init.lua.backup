@@ -219,8 +219,6 @@ local servers = {
   "cssls",
   "html",
   "lua_ls",
-  "gopls",
-  "golangci-lint-langserver",
 }
 
 for _, server in ipairs(servers) do
