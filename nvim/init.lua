@@ -30,7 +30,19 @@ vim.opt.rtp:prepend(lazypath)
 -- PLUGINS
 ------------------------------
 require("lazy").setup({
-    -- NOTIFY 
+    -- NOTIFY
+     {
+    "barrett-ruth/live-server.nvim",
+    build = "npm install -g live-server",
+    cmd = { "LiveServerStart", "LiveServerStop" },
+    config = function()
+      require("live-server").setup({
+        port = 5500,
+        browser_command = "firefox", -- или "firefox", "chrome", "brave", ...
+        quiet = false,
+      })
+    end,
+    },
     { "rcarriga/nvim-notify" },
     {
         "echasnovski/mini.pairs",
