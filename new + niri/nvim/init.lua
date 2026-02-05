@@ -29,20 +29,7 @@ vim.opt.rtp:prepend(lazypath)
 ------------------------------
 -- PLUGINS
 ------------------------------
-require("lazy").setup({
-    -- NOTIFY
-     {
-    "barrett-ruth/live-server.nvim",
-    build = "npm install -g live-server",
-    cmd = { "LiveServerStart", "LiveServerStop" },
-    config = function()
-      require("live-server").setup({
-        port = 5500,
-        browser_command = "firefox", -- или "firefox", "chrome", "brave", ...
-        quiet = false,
-      })
-    end,
-    },
+require("lazy").setup({ 
     { "rcarriga/nvim-notify" },
     {
         "echasnovski/mini.pairs",
@@ -197,8 +184,37 @@ require("lualine").setup()
 ------------------------------
 -- FILE TREE
 ------------------------------
-require("nvim-tree").setup()
-vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>")
+
+vim.keymap.set("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { silent = true })
+
+require("nvim-tree").setup({
+  sync_root_with_cwd = true,
+  respect_buf_cwd = true,
+
+  update_focused_file = {
+    enable = true,
+    update_root = true,
+  },
+
+  actions = {
+    open_file = {
+      quit_on_open = false,
+    }
+  },
+})
+
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function(data)
+    -- если стартуем с файла
+    if vim.fn.filereadable(data.file) == 1 then
+      local dir = vim.fn.fnamemodify(data.file, ":p:h")
+      vim.cmd("cd " .. dir)
+      require("nvim-tree.api").tree.open({ focus = false })
+    end
+  end,
+})
+
 
 ------------------------------
 -- TELESCOPE
